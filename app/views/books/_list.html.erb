@@ -1,0 +1,33 @@
+<div class="col-xs-3">
+   <h2>User info</h2>
+   <%= attachment_image_tag user, :profile_image, :fill, 60, 60, class: "user_image", format: 'jpeg', fallback: "no_image.jpg" %>
+        <table class="table">
+         <tbody>
+          <tr></tr>
+           <tr>
+            <th>name<h4 class="name"><%= user.username %></h4></th>
+           </tr>
+           <tr>
+            <th>introduction<h4 class="introduction"><%= user.introduction %></h4></th>
+            <th></th>
+           </tr>
+           </tbody>
+          </table>
+           <div class="row">
+           <%= link_to "introduction", edit_user_path(current_user.id), class: "edit_user_#{current_user.id} btn btn-default " %></p></th>
+         </div>
+        <h2>New book</h2>
+         <%= form_for(book) do |f| %>
+          <div class="field row">
+           <label for="book_title">Title</label>
+            <%= f.text_field :title, class: "book_title" %>
+          </div>
+          <div class="field row">
+           <label for="book_opinion">Opinion</label>
+          <%= f.text_area :body, class: "book_body" %>
+          </div>
+          <div class="actions row">
+          <%= f.submit 'create book',class: "btn btn-primary"   %>
+          </div>
+         <% end %>
+       </div>

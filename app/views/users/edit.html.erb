@@ -1,0 +1,18 @@
+<h2>User info</h2>
+ <%= form_for(@user) do |f| %>
+   <div class="field">
+      <label class="control-label sr-only" for="inputEmail">Name</label>
+         <%= f.text_field :username, class: "name"%>
+     </div>
+     <div class="field">
+      <label class="control-label sr-only" for="inputEmail">Image</label>
+         <%= f.attachment_field :profile_image, class: "user_image" %>
+     </div>
+     <div class="field">
+      <label class="control-label sr-only" for="inputEmail">Introduction</label>
+         <%= f.text_field :introduction, class: "introduction" %>
+     </div>
+     <div class="actions">
+    <%= f.submit "Update User", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+     </div>
+<% end %>
