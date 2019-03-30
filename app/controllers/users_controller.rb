@@ -31,9 +31,8 @@ class UsersController < ApplicationController
   	def update
        @user = User.find(params[:id])
        @user.update(user_params)
-       
        if @user.save
-          redirect_to user_path(@user.id)
+          redirect_to user_path(@user.id), :notice => "New profile was successfully created"
        else
           render :edit
         end

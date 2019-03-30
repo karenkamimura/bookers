@@ -1,4 +1,5 @@
-<%= render 'books/list', user: @user, book: @book %>
+<%= h(flash.now[:notice]) %>
+<%= render 'books/list', user: @user, book: @book_new %>
       <div class="col-xs-9">
        <h2>Book detail</h2>
        <table class ="table">

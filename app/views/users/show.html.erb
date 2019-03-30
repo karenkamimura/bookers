@@ -1,3 +1,4 @@
+<%= h(flash[:notice]) %>
 <%= render 'users/list', user: @user, book: @book %>
     <div class="col-xs-9">
       <h2>Books</h2>
@@ -15,7 +16,7 @@
            <tr>
             <td><%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, class: "user_image", format: 'jpeg', fallback: "no_image.jpg" %></td>
 
-            <td><%= link_to book.title, book_path(book.id) %></a></td>
+            <td><%= link_to book.title, book_path(book.id), class: "book_#{book.id}" %></a></td>
 
             <td><%= book.body %></td>
            </tr>
