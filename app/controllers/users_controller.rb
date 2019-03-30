@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-	 before_action :authenticate_user!
+	 before_action :authenticate_user!,except: [:about]
+
+   def about
+   end
 
    def new
     @book = Book.new
@@ -18,31 +21,23 @@ class UsersController < ApplicationController
 
   	def index
   		 @book = Book.new
-       @books = Book.all
        @book_user = User.all
        @user = current_user
   	end
 
-  	def new
-  		@user = User.new
-  	end
-
-  	def create
-      @book = Book.new(book_params)
-      @book.user_id = current_user.id
-      @book.save
-      redirect_to book_path(@book.id), :notice => "New book was successfully created"
-  		@user = User.new(user_params)
-  		@user.save
-  		redirect_to @user
-  	end
   	def destroy
   	end
 
   	def update
-        @user = User.find(params[:id])
-        @user.update(user_params)
-        redirect_to user_path(@user.id)
+       @user = User.find(params[:id])
+       @user.update(user_params)
+       
+       if @user.save
+          redirect_to user_path(@user.id)
+       else
+          render :edit
+        end
+
       end
 
   	def user_params

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 	devise_for :users
 	root 'books#home'
+	get 'about' => 'users#about'
 	# get '/books/tttt' => 'books#bookindex'
 
 
